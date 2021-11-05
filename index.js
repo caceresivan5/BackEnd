@@ -27,7 +27,7 @@ class Usuario {
   const res = new Usuario();
   
   res.addMascota("Tortuga");
-  res.addBook("Viaje al centro de la Tierra" , "Julio Berne");
+  res.addBook("Viaje al Centro de la Tierra" , "Julio Berne");
   
   console.log(res.getFullName());
   console.log(res.addMascota())
