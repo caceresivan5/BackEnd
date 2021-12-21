@@ -4,7 +4,7 @@ class Usuario {
       this.nombre = "Ivan";
       this.apellido = "Caceres";
       this.libros = [{ titulo: "Odisea", autor: "Homero" }];
-      this.mascotas = ["Perro", "Gato", "Loro"];
+      this.mascotas = ["Perro", "Gato", "Pez"];
     }
     getFullName() {
       return `El nombre del usuario es ${this.nombre + " " + this.apellido}`;
