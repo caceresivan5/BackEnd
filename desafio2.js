@@ -43,7 +43,7 @@ const main = async () => {
   console.log(
     await fileHandler.save(
       "PlayStation 1 ",
-      60000,
+      65000,
      "https://static.turbosquid.com/Preview/2017/09/24__12_23_05/CONTEXTIMAGE.jpg0187D165-443E-441A-8E39-C55006D589A3Large.jpg"
       )
   );

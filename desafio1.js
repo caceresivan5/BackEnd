@@ -4,7 +4,7 @@ class Usuario {
       this.nombre = "Ivan";
       this.apellido = "Caceres";
       this.libros = [{ titulo: "Odisea", autor: "Homero" }];
-      this.mascotas = ["Perro", "Gato", "Loro"];
+      this.mascotas = ["Perro", "Gato", "Pez"];
     }
     getFullName() {
       return `El nombre del usuario es ${this.nombre + " " + this.apellido}`;
@@ -27,7 +27,7 @@ class Usuario {
   const res = new Usuario();
   
   res.addMascota("Tortuga");
-  res.addBook("Viaje al Centro de la Tierra" , "Julio Berne");
+  res.addBook("Inferno" , "Dan Brown");
   
   console.log(res.getFullName());
   console.log(res.addMascota())

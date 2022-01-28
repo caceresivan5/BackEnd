@@ -2,9 +2,16 @@
   "name": "BackEnd",
   "version": "1.0.0",
   "description": "",
+<<<<<<< HEAD
   "main": "desafio2.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
+=======
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node desafio2.js"
+>>>>>>> 2b0fbc992de2da5c2f6fd6da7c3f3b269b9ef011
   },
   "repository": {
     "type": "git",
