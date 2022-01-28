@@ -3,37 +3,40 @@ const fs = require('fs');
 
 class File {
   constructor() {
-    this.filePath = "products.txt";
+    this.archivoPath = "products.txt";
   }
+  
   async read() {
     try {
-      const file = await fs.promises.readFile(this.filePath, "utf-8");
-      return JSON.parse(file);
+      const archivo = await fs.promises.readFile(this.archivoPath, "utf-8");
+      return JSON.parse(archivo);
     } catch (err) {
       return [];
     }
   }
+  
   async save(title, price, thumbnail) {
     try {
-      const products = await this.read();
-      const newProduct = {
-        id: products.length + 1,
+      const productos = await this.read();
+      const newProducto = {
+        id: productos.length + 1,
         title,
         price,
         thumbnail,
       };
-      products.push(newProduct);
+      productos.push(newProducto);
       await fs.promises.writeFile(
-        this.filePath,
-        JSON.stringify(products, null, 2)
+        this.archivoPath,
+        JSON.stringify(productos, null, 2)
       );
       return `AGREGADO ${title} A LA LISTA DE PRODUCTOS`;
     } catch (err) {
       console.log("ALGO SALIO MAL", err);
     }
   }
+  
   async delete() {
-    await fs.promises.unlink(this.filePath);
+    await fs.promises.unlink(this.archivoPath);
     console.log('ELIMINADO')
   }
 }
@@ -49,18 +52,19 @@ const main = async () => {
   );
   console.log(
     await fileHandler.save(
-      "PlayStation 4",
+      "PlayStation 2",
       70000,
-      "https://m.media-amazon.com/images/I/6118ctEjpoL._AC_SL1500_.jpg"
+      "https://resizer.glanacion.com/resizer/XwzL5-JRa4QFUHBWRSqrSojmlC4=/768x0/filters:quality(80)/cloudfront-us-east-1.images.arcpublishing.com/lanacionar/5SQ4LH7YX5GG3JAOXFNBWWMMAQ.jpg"
     )
   );
   console.log(
     await fileHandler.save(
-      "PlayStation 5",
-      90000,
-      "https://hips.hearstapps.com/hmg-prod.s3.amazonaws.com/images/ps5-playstaton-5-2-1600255876.jpg"
+      "PlayStation 3",
+      70000,
+      "https://m.media-amazon.com/images/I/91UX9xN6xbL._SL1500_.jpg"
     )
   );
+ 
   console.log("Read: ", await fileHandler.read());
    setTimeout(async () => {
     await fileHandler.delete();
