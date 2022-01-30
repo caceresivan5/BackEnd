@@ -1,7 +1,6 @@
 {
-  "name": "BackEnd",
+  "name": "expressapp",
   "version": "1.0.0",
-  "description": "",
   "main": "desafio1.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -16,5 +15,10 @@
   "bugs": {
     "url": "https://github.com/caceresivan5/BackEnd/issues"
   },
-  "homepage": "https://github.com/caceresivan5/BackEnd#readme"
+  "homepage": "https://github.com/caceresivan5/BackEnd#readme",
+  "dependencies": {
+    "moment": "^2.29.1"
+  },
+  "devDependencies": {},
+  "description": ""
 }
