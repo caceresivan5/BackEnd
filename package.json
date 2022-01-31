@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/caceresivan5/BackEnd#readme",
   "dependencies": {
+    "express": "^4.17.2",
     "moment": "^2.29.1"
   },
   "devDependencies": {},
