@@ -18,11 +18,23 @@ const productos = [
 
 ]
 
+//Genero un numero random
+const NumeroRandom =  Math.floor(Math.random() * (6 - 1)) + 1;
+//utilizo ese numero para filtrar el array y obtener un producto
+const productoRandom = productos.filter(producto => producto.id === NumeroRandom);
+
+
 //lo que vamos a ver del lado del cliente
 
-app.get("/", (req, res) => {
+//muestro el array producto
+app.get("/productos", (req, res) => {
     res.json(productos);
   });
+
+  //muestro el producto seleccionado al azar 
+  app.get("/productosRandom", (req, res)=>{
+      res.json(productoRandom);
+  })
 
 
 //escucho lo que hay en el puerto

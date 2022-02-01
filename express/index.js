@@ -11,28 +11,50 @@ const port = 8080
 let visitas = 0
 let date = new Date();
 
-const productos = [
-    {id:1, nombre:"Dentrifico", marca:'Colgate', imagen:"https://http2.mlstatic.com/D_NQ_NP_710139-MLA42353020233_062020-V.jpg", precio:1200},
-    {id:2, nombre:"Cepillo de Dientes", marca:'Colgate', imagen:"https://m.media-amazon.com/images/I/81rdz3q0DJL._SL1500_.jpg", precio:500},
-    {id:3, nombre:"Shampoo", marca:'Head & Shouders', imagen:"https://images.ctfassets.net/jdgtuh2uadx0/2oO6Un3ocd6y7lbthwHpsn/6cce3fbc15b76c8120055d93bae0cefe/LIMPIEZA-RENOVADORA-SHAMPOO.png", precio:1600},
-    {id:4, nombre:"Crema de Enjuage", marca:'Head & Shouders', imagen:"https://farmacityar.vteximg.com.br/arquivos/ids/184954-1000-1000/206040_Shampoo-Head-Shoulders-Control-Grasa-x-375-Ml-imagen-1.jpg?v=636932756750100000", precio:1800},
-    {id:5, nombre:"Jabon de Tocador", marca:'Estrella', imagen:"https://walmartar.vteximg.com.br/arquivos/ids/875117-1000-1000/Jab-n-Tocador-Estrella-Relajaci-n-130-Gr-1-474880.jpg?v=637377135812330000", precio:800},
-    {id:6, nombre:"Toallon", marca:'Pixel', imagen:"https://www.sueniolandia.com.ar/wp-content/uploads/2019/12/PALTO-PIXEL.jpg", precio:2000}
+const frase = "HOLA MUNDO, COMO ESTAN?"
 
-]
+//middleware
+//avisamos a EXPRESS que vamos a recibir data en formato Json
+app.use(express.json);
+app.use(express.urlencoded({extended: true}));
 
 //lo que vamos a ver del lado del cliente
 
 app.get("/", (req, res) => {
-    res.json(productos);
+    res.send(`<h1>BIENVENIDOS AL SERVIDOR EXPRESS </h1>`);
   });
 
-app.get("/visitas", (req, res) =>{
-    res.send(`NUMERO DE VISITAS: ${visitas++}`);
+  //leyendo parametros desde la url del browser PARAMS
+app.get("/visitas/:id", (req, res) =>{
+    res.send(`NUMERO DE VISITAS CON EL ID ${req.params.id}: ${visitas++}`);
 });
+
+//leyendo parametros con un query QUERY
 app.get("/fyh", (req, res) =>{
-    res.send(`FECHA Y HORA : ${date}`);
+    res.send(`${req.query.name} LA FECHA Y HORA ES : ${date}`);
 });
+
+//EJERCICIO EXPRESS AVANZADO
+
+//imprimir la frase de una constante
+app.get("/api/Frase", (req, res) =>{
+    console.log("REQUEST RECIBIDO");
+
+    res.send({Frase:frase});
+})
+
+// a :num le voy a poner un numero y me tiene que imprimir la letra que se encuentra en esa posicion
+app.get("/api/letras/:num", (req, res) =>{
+    let position = req.params.num -1
+
+    if( position >= frase.length || position< 0){
+        res.json({mssg:"EL PARAMETRO ESTA FUERA DE RANGO"})
+    }else if(isNaN(position)){
+        res.json({mssg:"EL PARAMETRO NO ES UN NUMERO"})
+    }else{
+        res.send(`<h1> ${frase.charAt(position)} </h1>`)
+    }
+})
 
 
 //escucho lo que hay en el puerto
