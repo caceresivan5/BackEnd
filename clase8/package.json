@@ -2,8 +2,9 @@
   "name": "clase8",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "index8.js",
   "scripts": {
+    "start": "nodemon index8.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -11,6 +12,7 @@
   "license": "ISC",
   "dependencies": {
     "express": "^4.17.2",
+    "multer": "^1.4.4",
     "nodemon": "^2.0.15"
   }
 }
