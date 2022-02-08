@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+
+    <span></span>  <!-- ACA SE VA A INSERTAR EL TEMPLATE --> 
+
+
+    <!-- importo el CDN de handlebars-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.7/handlebars.min.js"></script>
+    <!-- aca va la logica de mi template-->
+    <script>
+
+        //creo en una variable mi template
+        const templateString = 
+        `
+        <h1> DATOS </h1>
+
+        <ul>
+            <li>{ { name } }</li>
+        </ul>    
+
+        `
+        //DEFINO MI TEMPLATE CON HANDLEBAR
+        const template = Handlebars.compile(templateString) //aplico el template que cree
+        //creo los datos
+        const datos = {
+            name: "IVAN"
+        }
+       
+        //necesito que genere el contenido
+        const content = template(datos)
+
+        //inserto todo mi template en la etiqueta span
+        document.querySelector('span').innerHTML = html
+    </script>
+
+</body>
+</html>

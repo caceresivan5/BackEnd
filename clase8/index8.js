@@ -17,7 +17,7 @@
 
 7 en el package.json voy a script - creo start -- "start": "nodemon index.js"
 
-8 para ejecutarlo siempre dentro de la carpeta iniciamos con nom start
+8 para ejecutarlo siempre dentro de la carpeta iniciamos con npm start
  */
 
 
