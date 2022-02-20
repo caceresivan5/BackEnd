@@ -38,4 +38,4 @@ app.use(express.static('public'))
 
 
 //puerto donde corre el servidor
-app.listen(8000)
+app.listen(8080)

@@ -7,7 +7,7 @@ const app = express();
 //defino mi variable puerto
 const port = 8080 
 
-
+//ARRAY DE PRODUCTOS
 const productos = [
     {id:1, nombre:"Dentrifico", marca:'Colgate', imagen:"https://http2.mlstatic.com/D_NQ_NP_710139-MLA42353020233_062020-V.jpg", precio:1200},
     {id:2, nombre:"Cepillo de Dientes", marca:'Colgate', imagen:"https://m.media-amazon.com/images/I/81rdz3q0DJL._SL1500_.jpg", precio:500},

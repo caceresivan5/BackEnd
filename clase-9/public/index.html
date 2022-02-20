@@ -22,7 +22,7 @@
         <h1> DATOS </h1>
 
         <ul>
-            <li>{ { name } }</li>
+            <li>{{nombre}}</li>
         </ul>    
 
         `
@@ -30,14 +30,14 @@
         const template = Handlebars.compile(templateString) //aplico el template que cree
         //creo los datos
         const datos = {
-            name: "IVAN"
+            nombre: "IVAN"
         }
        
         //necesito que genere el contenido
         const content = template(datos)
 
         //inserto todo mi template en la etiqueta span
-        document.querySelector('span').innerHTML = html
+        document.querySelector('span').innerHTML = content
     </script>
 
 </body>
