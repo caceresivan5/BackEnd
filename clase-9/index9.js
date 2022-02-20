@@ -22,9 +22,10 @@ creo la carpeta public y dentro coloco el index.HTML para poder comunicar el FRO
 
 //**************************************************************************************************************** 
 
+/*
+PARA CREAR UNA PLANTILLA DESDE EL HTML
 //creo el servidor
 const express = require('express')
-
 
 
 //inicializo express
@@ -34,8 +35,84 @@ const app = express()
 app.use(express.static('public'))
 
 
-
-
-
 //puerto donde corre el servidor
 app.listen(8080)
+*/
+//******************************************************************************************** */
+/*
+//PARA CREAR UN MOTOR DE PLANTILLA DESDE EL SERVIDOR
+
+const express = require('express');
+const fs = require('fs');
+
+const app = express();//defino el app
+
+//defino el motor de plantilla NO ES HANDLEBARS
+app.engine('ntl', function(filePath, options, callback) {
+    fs.readFile(filePath, function(err, content) {
+        if(err){
+            return callback(new Error(err));
+        }
+        const rendered = content.toString()
+                                .replace('#title#', '' + options.title + '')
+                                .replace('#message#', '' + options.message + '');
+        return callback(null, rendered);
+    });
+});
+
+
+app.set('views', './views'); //especifica el directorio de visitas
+app.set('view engine', 'ntl'); //registra el motor de plantillas
+
+app.get('/', function (req, res){
+    res.render('index', {title:'greeting', message: 'Hello there!'}); //reenderiza el index del lado del cliente 
+    //el archivo que esta dentro de view se va a llamar index y la data que le voy a pasar es el objeto que defini al lado
+});
+
+app.listen(8000);
+*/
+
+
+
+
+const express = require('express');
+const { promise: fs} = require('fs');
+
+const app = express();//defino el app
+
+//defino el motor de plantilla NO ES HANDLEBARS
+app.engine('cte', async (filePath, options, callback) =>{
+
+
+try{
+    const content = await fs.readFile(filaPath)
+   const rendered = content.toString()
+                                .replace('^^titulo$$', '' + options.titulo + '')
+                                .replace('^^mensaje$$', '' + options.mensaje + '')
+                                .replace('^^autor$$', '' + options.autor + '')
+                                .replace('^^version$$', '' + options.version + '')
+    return callback(null, rendered)
+}catch (err){
+    return callback(new Error(err))
+
+}
+})
+
+
+app.set('views', './views'); //especifica el directorio de visitas
+app.set('view engine', 'cte'); //registra el motor de plantillas
+
+app.get('/cte1', (req, res) =>{ //defino la ruta
+
+    const datos = {
+        titulo: 'cte1',
+        mensaje: 'mensaje de cte1',
+        autor: 'autor de cte1',
+        version:'v1'
+    }
+    
+    res.render('plantilla', datos) //hago un render - plantilla es el nombre del archivo y datos son los datos
+})
+
+app.listen(8000);
+ 
