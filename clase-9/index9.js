@@ -73,7 +73,7 @@ app.listen(8000);
 */
 
 
-
+//plantilla desde el servidor SIN handlebars
 
 const express = require('express');
 const { promise: fs} = require('fs');
@@ -110,9 +110,17 @@ app.get('/cte1', (req, res) =>{ //defino la ruta
         autor: 'autor de cte1',
         version:'v1'
     }
-    
+
     res.render('plantilla', datos) //hago un render - plantilla es el nombre del archivo y datos son los datos
 })
 
 app.listen(8000);
+
+// PASOS PARA CREAR UNA PLANTILLA CON HANDLEBARS
+/*
+1 instalar handlerbars
+2 hacer el seteo de handlerbars
+3 poner la sintaxis de handlerbars en una etiqueta html <span> {{{body}}} </span>
+4 definir la ruta
+ */
  
