@@ -19,7 +19,7 @@ const productos = [
 ]
 
 //Genero un numero random
-const NumeroRandom =  Math.floor(Math.random() * (6 - 1)) + 1;
+const NumeroRandom =  Math.floor(Math.random() * (productos.length - 1)) + 1;
 //utilizo ese numero para filtrar el array y obtener un producto
 const productoRandom = productos.filter(producto => producto.id === NumeroRandom);
 
